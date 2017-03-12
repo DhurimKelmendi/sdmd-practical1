@@ -13,18 +13,21 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Next word" />
+        android:text="Next word"
+        android:onClick="onClick" />
 
     <Button
         android:id="@+id/hearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hear the word" />
+        android:text="Hear the word"
+        android:onClick="onClick" />
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:text="Back"
+        android:onClick="onClickBack" />
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
