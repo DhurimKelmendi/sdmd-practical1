@@ -16,6 +16,8 @@ import java.util.Random;
 
 public class WordActivity extends AppCompatActivity {
     String[] wordList;
+    MediaPlayer mp;
+    int rn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,18 +26,10 @@ public class WordActivity extends AppCompatActivity {
         if(wordExtras == null)
             return;
         String chosenLanguage = wordExtras.getString(MainActivity.EXTRA_LANGUAGE);
-        int languageId = getResources().getIdentifier(chosenLanguage,"array",getPackageName());
+        int languageId = getResources().getIdentifier(chosenLanguage, "array", getPackageName());
         wordList = getResources().getStringArray(languageId);
-        Button one = (Button) this.findViewById(R.id.soundButton);
-        int rn = random(wordList.length);
-        final MediaPlayer mp = MediaPlayer.create(this, getSound(wordList[rn]));
-        //TODO(5)  Displaying a button which should play the pronunciation of the random foreign word or phrase in the chosen language when clicked.(Play sound onClickSound)
-        //TODO: select correct mp3 file for the displayed word
-        one.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                mp.start();
-            }
-        });
+        rn = random(wordList.length);
+        mp = MediaPlayer.create(this, getSound(wordList[rn]));
         displayWord(R.id.wordText, R.id.wordImage, wordList[rn]);
     }
 //COMPLETED(7)  Displaying a button which should take the user back to the language selection screen.
@@ -43,10 +37,17 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void onClickSound(View v){
+//COMPLETED(5)  Displaying a button which should play the pronunciation of the random foreign word or phrase in the chosen language when clicked.
+        mp.start();
+    }
 
-//TODO(6)  Displaying a button which should provide a new random foreign word or phrase in the chosen language when clicked.
+//COMPLETED(6)  Displaying a button which should provide a new random foreign word or phrase in the chosen language when clicked.
     public void onClickNext(View view){
-        displayWord(R.id.wordText, R.id.wordImage, wordList[random(wordList.length)]);
+        int rn = random(wordList.length);
+        displayWord(R.id.wordText, R.id.wordImage, wordList[rn]);
+        mp.release();
+        mp = MediaPlayer.create(this, getSound(wordList[rn]));
     }
 
 //COMPLETED(3)  Displaying a random useful foreign word or phrase on the Language Screen upon startup.
