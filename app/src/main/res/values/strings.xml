@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">SDMD Practical 1</string>
+    <string-array name="Albanian">
+        <item>"telefoni"</item>
+        <item>"kompjuteri"</item>
+        <item>"ora"</item>
+        <item>"vetura"</item>
+        <item>"shkolla"</item>
+    </string-array>
+    <string-array name="German">
+    <item>"bus"</item>
+    <item>"wohnung"</item>
+    <item>"kurven"</item>
+    <item>"strasse"</item>
+    <item>"ampel"</item>
+</string-array>
 </resources>

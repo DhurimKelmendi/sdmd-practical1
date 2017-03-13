@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+//COMPLETED(1)  Selecting a foreign language from a drop down component.(with ListView)
         String[] languages = {"Albanian", "German"};
         ListAdapter languageAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, languages);
         ListView languageListView = (ListView) findViewById(R.id.language_list);
@@ -27,12 +27,11 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemClickListener(){
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //TODO(1) Go to the next Activity, passing the language selected
                         String language = String.valueOf(parent.getItemAtPosition(position));
+//COMPLETED(2)  Navigating to a new screen (Language Screen) which knows about the selected foreign language(With intents, intent extras)
                         Intent intent = new Intent(MainActivity.this, WordActivity.class);
                         intent.putExtra(EXTRA_LANGUAGE,language);
                         startActivity(intent);
-//                        Toast.makeText(MainActivity.this, language, Toast.LENGTH_LONG).show();
                     }
                 }
         );
